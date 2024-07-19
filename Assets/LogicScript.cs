@@ -10,9 +10,13 @@ public class LogicScript : MonoBehaviour
     public Text scoreText;
     public GameObject gameOverScreen;
     public AudioSource background_music;
+    public AudioSource score_sound;
 
     private void Start()
     {
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        background_music = audioSources[0];
+        score_sound = audioSources[1];
         background_music.Play();
     }
 
@@ -21,6 +25,7 @@ public class LogicScript : MonoBehaviour
     {
         playerScore += scoreToAdd;
         scoreText.text = playerScore.ToString();
+        score_sound.Play();
     }
 
     public void restartGame()
